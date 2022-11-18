@@ -1,4 +1,5 @@
-const titleClickHandler = function(event){
+{
+    const titleClickHandler = function(event){
     event.preventDefault();
     
     const clickedElement = this;
@@ -38,3 +39,42 @@ const titleClickHandler = function(event){
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+
+
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+function generateTitleLinks(){
+
+  /* remove contents of titleList */
+
+  // const clearLinkList = function (){
+  //   document.querySelectorAll('li').innerHTML = '';
+  // }
+
+  // const listElements = querySelectorAll('li');
+  // for(let listElement of listElelemnts){
+  //   listElement.innerHTML = '';
+  // }
+
+  //po co usuwamy te linki skoro potem usuwamy je manualnie w hatmlu?
+
+  /* for each article */
+  const articles = document.querySelectorAll('.titles'); //czy da sie wstawić tutaj po prostu stałą?
+  
+    /* get the article id */
+    for (let )
+    /* find the title element */
+
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+
+    /* insert link into titleList */
+
+}
+
+generateTitleLinks();
+
+}
