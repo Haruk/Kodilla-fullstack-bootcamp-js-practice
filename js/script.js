@@ -36,8 +36,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
-    
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.list .tags';
     
 
   // eslint-disable-next-line no-inner-declarations
@@ -67,7 +67,10 @@
   generateTitleLinks();
 
   // eslint-disable-next-line no-inner-declarations
+
   function generateTags(){
+    /* create a variable allTags with an empty array */
+    let allTags = {};
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
 
@@ -75,6 +78,7 @@
     for (let article of articles){
       /* find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector)
+      
       /* make html variable with empty string */
       let html = '';
       /* get tags from data-tags attribute */
@@ -89,16 +93,38 @@
         /* add generated code to html variable */
        
         const tagHTML = tag;
+
+        /* [NEW] check if this link is NOT already in allTags */
+        if(!allTags[tag]){
+          /* [NEW] add tag to allTags object*/
+          allTags[tag]=1;
+        }else {
+          allTags[tag]++;
+        }
+
+
         /* insert HTML of all the links into the tags wrapper */
         const tagListHTML = '<li><a href="#tag-' + tagHTML + '">' + tagHTML + '</a></li>&nbsp';
         tagsWrapper.insertAdjacentHTML('beforeend', tagListHTML);
-        
       }  
-      /* END LOOP: for each tag */
       
-    /* END LOOP: for every article: */
-    }
 
+    }
+    /* [NEW] find list of tags in right column */
+    const tagListWrapper = document.querySelector(optTagsListSelector);
+    console.log(tagListWrapper); //DLACZEGO MA WARTOŚĆ NULL?!
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for(let tag in allTags){
+      /* [NEW] generate code of a link and add it to allTagsHTML */
+      allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    }
+    /* [NEW] END LOOP: for each tag in allTags: */
+
+    /*[NEW] add HTML from allTagsHTML to tagList */
+    tagListWrapper.innerHTML = allTagsHTML;
   }
   
   generateTags();
@@ -131,6 +157,8 @@
   }
 
   generateAuthors();
+
+  // do dokończenia funkcje tagClickHandler i authorClickHandler!
   
   function tagClickHandler(event){
     /* prevent default action for this event */
@@ -175,5 +203,14 @@
   
   addClickListenersToTags();
   
+  function authorsClickHandler(event){
+
+  }
+
+  function addClickListenersToAuthors(){
+
+  }
+
+    
 
 }
