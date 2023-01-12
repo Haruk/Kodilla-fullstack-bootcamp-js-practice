@@ -124,7 +124,7 @@
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagListWrapper.innerHTML = allTagsHTML;
+    // tagListWrapper.innerHTML = allTagsHTML;
   }
   
   generateTags();
