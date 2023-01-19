@@ -37,16 +37,16 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.list .tags';
+    optTagsListSelector = '.list.tags';
     
 
   // eslint-disable-next-line no-inner-declarations
-  function generateTitleLinks() {
+  function generateTitleLinks(customSelector = '') {
 
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
   
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector+customSelector);
 
     for (let article of articles){
       const articleId = article.getAttribute('id');
@@ -61,7 +61,8 @@
     for(let link of links){
       link.addEventListener('click', titleClickHandler);
     }
-
+    console.log(titleList);
+    console.log(articles);
   }
 
   generateTitleLinks();
@@ -112,7 +113,7 @@
     }
     /* [NEW] find list of tags in right column */
     const tagListWrapper = document.querySelector(optTagsListSelector);
-    console.log(tagListWrapper); //DLACZEGO MA WARTOŚĆ NULL?!
+    console.log(tagListWrapper); 
     /* [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
 
@@ -124,7 +125,8 @@
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    // tagListWrapper.innerHTML = allTagsHTML;
+
+    tagListWrapper.innerHTML = allTagsHTML;
   }
   
   generateTags();
@@ -167,9 +169,12 @@
     const clickedElement = this;
     /* make a new constant "href" and read the attribute "href" of the clicked element */
     const href = document.querySelectorAll('a.active[href^="#tag-"]');
+    // Podobnie, dla wszystkich linków do tego samego tagu, możemy użyć selektora:
+    // 'a[href="' + href + '"]'
     
     /* make a new constant "tag" and extract tag from the "href" constant */
-    const tag = '';
+    const tag = href.replace('#tag-', '');
+    
     /* find all tag links with class active */
   
     /* START LOOP: for each active tag link */
@@ -183,12 +188,13 @@
     /* START LOOP: for each found tag link */
     for ( let tagLink of tagLinks){
 
-    }
+    
       /* add class active */
   
     /* END LOOP: for each found tag link */
-  
+    }
     /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks('[data-tags~="' + tag + '"]');
   }
   
   function addClickListenersToTags(){
