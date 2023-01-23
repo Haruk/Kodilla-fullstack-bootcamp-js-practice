@@ -9,6 +9,7 @@ $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Source Sans Pro', sans-serif;
 
+
 /* Global */
 
 *, *::before, *::after {
@@ -117,4 +118,24 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+
+.tagcloud-1 {
+  font-size: 15px;
+}
+
+.tagcloud-2{
+  font-size: 18px;
+}
+
+.tagcloud-3{
+  font-size: 21px;
+}
+
+.tagcloud-4{
+  font-size: 24px;
+}
+
+.tagcloud-5{
+  font-size: 27px;
 }
