@@ -11,7 +11,7 @@
 		  <h1 class="logo">my blog</h1>
 		  <main class="wrapper">
 			<aside class="sidebar">
-			  <h2 class="section-title">All posts</h2>
+			  <h2 class="section-title" id="articles-list-heading">All posts</h2>
 			  <ul class="list titles" id="articles-list">
 				
 			  </ul>
@@ -214,15 +214,15 @@
 	  
 	  <script id="template-tag-cloud-link" type="text/x-handlebars-template">
 		{{#each tags}}
-		<li><a href="#tag-{{ tagNameTpl }}" class="{{ tagClassTpl }}">{{ tagNameTpl }}</a></li><!-- {{ tagCountTpl }} -->
+		<li><a href="#tag-{{ tagNameTpl }}" class="tagcloud-{{ tagClassTpl }}">{{ tagNameTpl }}</a></li><!-- {{ tagCountTpl }} -->
 		{{/each}}
 	  </script>
 	  
-	  <script id="template-author-link" type="text/x-handlebars-template"> <!-- works now -->
+	  <script id="template-author-link" type="text/x-handlebars-template">
 		<a href="#author-{{ authorNoSpaceTpl }}">{{ authorTpl }}</a>
 	  </script>
 	  
-	  <script id="template-author-list-link" type="text/x-handlebars-template"> <!-- works ok -->
+	  <script id="template-author-list-link" type="text/x-handlebars-template">
 		{{#each authors}}
 		<li><a href="#author-{{ authorNoSpaceTpl }}">{{ authorNameTpl }}</a></li>
 		{{/each}}

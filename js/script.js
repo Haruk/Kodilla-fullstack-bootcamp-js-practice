@@ -219,7 +219,7 @@
     tagListWrapper.innerHTML += templates.tagCloudLink(allTagsData);
   }
 
-    function tagClickHandler(event){
+  function tagClickHandler(event){
     /* prevent default action for this event */
     event.preventDefault();
     
@@ -227,7 +227,7 @@
     const clickedElement = this;
     
     /* make a new constant "href" and read the attribute "href" of the clicked element */
-    const linkHref = clickedElement.querySelectorAll('href');
+    const linkHref = clickedElement.getAttribute('href');
        
     /* make a new constant "tag" and extract tag from the "href" constant */
     const tag = linkHref.replace('#tag-', '');
@@ -248,7 +248,7 @@
     }
   
     /* find all tag links with "href" attribute equal to the "href" constant */
-    const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
+    const tagLinks = document.querySelectorAll('a[href="' + linkHref + '"]');
     /* START LOOP: for each found tag link */
     for (let tagLink of tagLinks){
       /* add class active */
